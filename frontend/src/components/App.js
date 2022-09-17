@@ -118,10 +118,13 @@ function App() {
 
   const handleSigninSubmit = ({ email, password }) => {
     auth.signin({ email, password })
-      .then(({ token }) => {
-        localStorage.setItem('token', token);
-        setLoggedIn(true);
-        setUserInfo({ email });
+      .then((user) => {
+        //.then(({ token }) => {
+        // localStorage.setItem('token', token);
+        if (user) {
+          setLoggedIn(true);
+          setUserInfo({ email });
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -162,17 +165,17 @@ function App() {
     }
   }, [isEditProfilePopupOpen, isAddPlacePopupOpen, isEditAvatarPopupOpen, isDeleteCardPopupOpen, isImageCardPopupOpen, isRegSuccess, isLoginIssue]);
 
-  useEffect(() => {
-    if (localStorage.getItem('token'))
-      auth.getContent(localStorage.getItem('token'))
-        .then(({ data: { email } }) => {
-          if (email) {
-            setLoggedIn(true);
-            setUserInfo({ email });
-          }
-        })
-        .catch((err) => console.log(err));
-  }, []);
+  // useEffect(() => {
+  //   if (localStorage.getItem('token'))
+  //     auth.getContent(localStorage.getItem('token'))
+  //       .then(({ data: { email } }) => {
+  //         if (email) {
+  //           setLoggedIn(true);
+  //           setUserInfo({ email });
+  //         }
+  //       })
+  //       .catch((err) => console.log(err));
+  // }, []);
 
   useEffect(() => {
     if (loggedIn) {

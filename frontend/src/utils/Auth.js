@@ -27,10 +27,12 @@ export const signin = ({ email, password }) => {
 export const getContent = (token) => {
   return fetch(`${baseUrl}/users/me`, {
     method: 'GET',
-    headers: {
-      ...headers,
-      "Authorization": `Bearer ${token}`
-    }
+    headers,
+    // headers: {
+    //   headers
+    //    ...headers,
+    //    "Authorization": `Bearer ${token}`
+    // }
   })
     .then((res) => checkResponse(res))
 }
