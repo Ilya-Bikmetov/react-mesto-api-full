@@ -1,0 +1,13 @@
+.popup__input_add-form_placename {
+  color: black;
+  margin: 0;
+  padding-bottom: 3px;
+}
+
+.popup__input_add-form_placename::placeholder {
+  color: #C4C4C4;
+}
+
+.popup__input_add-form_placename:focus {
+  color: black;
+}

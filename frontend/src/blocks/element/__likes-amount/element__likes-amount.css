@@ -1,0 +1,11 @@
+.element__likes-amount {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: right;
+  color: black;
+  margin: 3px 26px 22px 0;
+  visibility: hidden;
+}

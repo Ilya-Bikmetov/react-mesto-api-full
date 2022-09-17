@@ -1,0 +1,12 @@
+.popup__input_add-form_link {
+  padding-bottom: 3px;
+  color: black;
+}
+
+.popup__input_add-form_link::placeholder {
+  color: #C4C4C4;
+}
+
+.popup__input_add-form_link:focus {
+  color: black;
+}

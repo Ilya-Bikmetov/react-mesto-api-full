@@ -1,0 +1,20 @@
+.profile-form__btn {
+  width: 100%;
+  min-height: 50px;
+  max-width: 358px;
+  margin-top: 216px;
+  padding: 0;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.22;
+  text-align: center;
+  cursor: pointer;
+  transition: opacity .5s ease-in-out;
+  border: none;
+  border-radius: 2px;
+
+}
+
+.profile-form__btn:hover {
+  opacity: 0.6;
+}
