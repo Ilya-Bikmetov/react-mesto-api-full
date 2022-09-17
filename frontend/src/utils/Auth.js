@@ -1,6 +1,5 @@
 import { checkResponse } from "./utils";
 
-// export const baseUrl = 'https://auth.nomoreparties.co';
 export const baseUrl = 'http://localhost:3001';
 const headers = {
   "Content-Type": "application/json",
