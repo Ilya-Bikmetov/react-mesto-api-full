@@ -148,6 +148,11 @@ const updateAvatar = async (req, res, next) => {
   }
 };
 
+const jwtClear = (req, res) => {
+  res.clearCookie('jwt');
+  res.end();
+};
+
 module.exports = {
   getUsers,
   createUser,
@@ -156,4 +161,5 @@ module.exports = {
   updateAvatar,
   login,
   getCurrentUser,
+  jwtClear,
 };

@@ -68,8 +68,12 @@ function App() {
   }
 
   const handleSignout = () => {
-    //localStorage.removeItem('token');
-    setLoggedIn(false);
+    api.clearJwtCookie('jwtclear')
+      .then(() => {
+        setLoggedIn(false);
+      })
+      .catch((err) => console.log(err));
+
   }
 
   const handleUpdateUser = ({ name, about }) => {

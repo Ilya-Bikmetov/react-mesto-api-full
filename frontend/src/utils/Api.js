@@ -52,7 +52,7 @@ class Api {
       .then(this._checkResponse)
   }
 
-  addCard({name, link, url}) {
+  addCard({ name, link, url }) {
     const body = {
       name,
       link,
@@ -92,6 +92,14 @@ class Api {
         .then(this._checkResponse)
 
     }
+  }
+  clearJwtCookie(url) {
+    return fetch(`${this._baseUrl}${url}`, {
+      method: 'GET',
+      headers: this._headers,
+      credentials: "include",
+    })
+      .then(this._checkResponse)
   }
 
 }
