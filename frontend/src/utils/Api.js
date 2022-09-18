@@ -99,7 +99,11 @@ class Api {
       headers: this._headers,
       credentials: "include",
     })
-      .then(this._checkResponse)
+      .then((res) => {
+        if (res.ok)
+          return;
+      return Promise.reject(`Возникла ошибка ${res.status}`);
+      })
   }
 
 }

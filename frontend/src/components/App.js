@@ -69,7 +69,8 @@ function App() {
 
   const handleSignout = () => {
     api.clearJwtCookie('jwtclear')
-      .then(() => {
+    .then(() => {
+        localStorage.setItem('jwt', false);
         setLoggedIn(false);
       })
       .catch((err) => console.log(err));
@@ -126,6 +127,7 @@ function App() {
         if (user) {
           setLoggedIn(true);
           setUserInfo({ email });
+          localStorage.setItem('jwt', true);
         }
       })
       .catch((err) => {
@@ -168,14 +170,17 @@ function App() {
   }, [isEditProfilePopupOpen, isAddPlacePopupOpen, isEditAvatarPopupOpen, isDeleteCardPopupOpen, isImageCardPopupOpen, isRegSuccess, isLoginIssue]);
 
   useEffect(() => {
-    auth.getContent()
-      .then(({ user }) => {
-        if (user.email) {
-          setLoggedIn(true);
-          setUserInfo({ email: user.email });
-        }
-      })
-      .catch((err) => console.log(err));
+    const jwt = localStorage.getItem('jwt');
+    if (jwt === 'true') {
+      auth.getContent()
+        .then(({ user }) => {
+          if (user.email) {
+            setLoggedIn(true);
+            setUserInfo({ email: user.email });
+          }
+        })
+        .catch((err) => console.log(err));
+    }
   }, []);
 
   useEffect(() => {
@@ -184,6 +189,7 @@ function App() {
         .then(([items, { user }]) => {
           setCurrentUser(user);
           setCards(items);
+          localStorage.setItem('jwt', true);
           history.push('./');
         })
         .catch((err) => console.log(err));
