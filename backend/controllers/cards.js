@@ -5,6 +5,7 @@ const ErrorNotFound = require('../utils/errors/error_Not_Found');
 
 const getCards = async (req, res, next) => {
   const cards = await Card.find({}).populate(['owner', 'likes']);
+  await cards.reverse();
   try {
     res.send(cards);
   } catch (err) {

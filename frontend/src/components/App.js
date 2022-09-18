@@ -68,7 +68,7 @@ function App() {
   }
 
   const handleSignout = () => {
-    localStorage.removeItem('token');
+    //localStorage.removeItem('token');
     setLoggedIn(false);
   }
 
@@ -119,8 +119,6 @@ function App() {
   const handleSigninSubmit = ({ email, password }) => {
     auth.signin({ email, password })
       .then((user) => {
-        //.then(({ token }) => {
-        // localStorage.setItem('token', token);
         if (user) {
           setLoggedIn(true);
           setUserInfo({ email });
