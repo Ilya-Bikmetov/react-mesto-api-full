@@ -165,23 +165,22 @@ function App() {
     }
   }, [isEditProfilePopupOpen, isAddPlacePopupOpen, isEditAvatarPopupOpen, isDeleteCardPopupOpen, isImageCardPopupOpen, isRegSuccess, isLoginIssue]);
 
-  // useEffect(() => {
-  //   if (localStorage.getItem('token'))
-  //     auth.getContent(localStorage.getItem('token'))
-  //       .then(({ data: { email } }) => {
-  //         if (email) {
-  //           setLoggedIn(true);
-  //           setUserInfo({ email });
-  //         }
-  //       })
-  //       .catch((err) => console.log(err));
-  // }, []);
+  useEffect(() => {
+    auth.getContent()
+      .then(({ user }) => {
+        if (user.email) {
+          setLoggedIn(true);
+          setUserInfo({ email: user.email });
+        }
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   useEffect(() => {
     if (loggedIn) {
       Promise.all([api.getInitialCards('cards'), api.getUser('users/me')])
-        .then(([items, userData]) => {
-          setCurrentUser(userData);
+        .then(([items, { user }]) => {
+          setCurrentUser(user);
           setCards(items);
           history.push('./');
         })

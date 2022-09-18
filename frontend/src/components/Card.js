@@ -13,7 +13,7 @@ function Card({ card, onCardClick, onCardLike, onCardDelete }) {
   return (
     <li className="element">
       <button onClick={handleDeleteClick} type="button" aria-label="Удалить" className="element__trash" style={
-        card.owner._id === currentUser._id
+         card.owner._id === currentUser._id
           ? { visibility: "visible" }
           : { visibility: "hidden" }
       }></button>

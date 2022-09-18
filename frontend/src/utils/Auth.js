@@ -3,7 +3,6 @@ import { checkResponse } from "./utils";
 export const baseUrl = 'http://localhost:3001';
 const headers = {
   "Content-Type": "application/json",
-  credentials: "include",
 };
 
 export const signup = ({ email, password }) => {
@@ -20,14 +19,16 @@ export const signin = ({ email, password }) => {
     method: 'POST',
     headers,
     body: JSON.stringify({ email, password }),
+    credentials: "include",
   })
     .then((res) => checkResponse(res))
 }
 
-export const getContent = (token) => {
+export const getContent = () => {
   return fetch(`${baseUrl}/users/me`, {
     method: 'GET',
     headers,
+    credentials: "include",
     // headers: {
     //   headers
     //    ...headers,

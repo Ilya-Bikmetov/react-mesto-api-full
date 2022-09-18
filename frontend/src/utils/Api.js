@@ -12,6 +12,7 @@ class Api {
     return fetch(`${this._baseUrl}${url}`, {
       method: 'GET',
       headers: this._headers,
+      credentials: "include",
     })
       .then(this._checkResponse)
   }
@@ -25,6 +26,7 @@ class Api {
       method: 'PATCH',
       body: JSON.stringify(body),
       headers: this._headers,
+      credentials: "include",
     })
       .then(this._checkResponse)
   }
@@ -32,6 +34,7 @@ class Api {
   getInitialCards(url) {
     return fetch(`${this._baseUrl}${url}`, {
       headers: this._headers,
+      credentials: "include",
     })
       .then(this._checkResponse)
   }
@@ -44,6 +47,7 @@ class Api {
       method: 'PATCH',
       body: JSON.stringify(body),
       headers: this._headers,
+      credentials: "include",
     })
       .then(this._checkResponse)
   }
@@ -57,6 +61,7 @@ class Api {
       method: 'POST',
       body: JSON.stringify(body),
       headers: this._headers,
+      credentials: "include",
     })
       .then(this._checkResponse)
   }
@@ -65,6 +70,7 @@ class Api {
     return fetch(`${this._baseUrl}${url}`, {
       method: 'DELETE',
       headers: this._headers,
+      credentials: "include",
     })
       .then(this._checkResponse)
   }
@@ -74,12 +80,14 @@ class Api {
       return fetch(`${this._baseUrl}${url}`, {
         method: 'PUT',
         headers: this._headers,
+        credentials: "include",
       })
         .then(this._checkResponse)
     } else {
       return fetch(`${this._baseUrl}${url}`, {
         method: 'DELETE',
         headers: this._headers,
+        credentials: "include",
       })
         .then(this._checkResponse)
 

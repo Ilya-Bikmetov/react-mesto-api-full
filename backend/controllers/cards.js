@@ -16,6 +16,7 @@ const createCard = async (req, res, next) => {
   const { name, link, owner = req.user._id } = req.body;
   try {
     const card = await Card.create({ name, link, owner });
+    await card.populate(['owner', 'likes']);
     res.send(card);
   } catch (err) {
     if (err.name === 'ValidationError') {
@@ -59,6 +60,7 @@ const likeCard = async (req, res, next) => {
     if (!card) {
       throw new ErrorNotFound('Передан несуществующий id карточки');
     }
+    await card.populate(['owner', 'likes']);
     res.send(card);
   } catch (err) {
     if (err.kind === 'ObjectId') {
@@ -80,6 +82,7 @@ const dislikeCard = async (req, res, next) => {
     if (!card) {
       throw new ErrorNotFound('Передан несуществующий id карточки');
     }
+    await card.populate(['owner', 'likes']);
     res.send(card);
   } catch (err) {
     if (err.kind === 'ObjectId') {
