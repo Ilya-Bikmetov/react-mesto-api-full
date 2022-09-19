@@ -25,6 +25,11 @@ app.use(cors);
 app.use(requestLogger);
 app.post('/signup', createUserValidator, createUser);
 app.post('/signin', loginValidator, login);
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 app.get('/jwtclear', jwtClear);
 app.use(auth);
 app.use('/users', require('./routes/users'));
