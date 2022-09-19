@@ -8,7 +8,6 @@ const ErrorConflict = require('../utils/errors/error_Conflict');
 const ErrorUnauthorized = require('../utils/errors/error_Unauthorized');
 
 const { SALT_ROUNDS = 10, JWT_SECRET, NODE_ENV } = process.env;
-
 const getUsers = async (req, res, next) => {
   try {
     const users = await User.find({});
@@ -58,7 +57,7 @@ const createUser = async (req, res, next) => {
   } = req.body;
 
   try {
-    const hash = await bcrypt.hash(password, SALT_ROUNDS);
+    const hash = await bcrypt.hash(password, parseInt(SALT_ROUNDS));
     const user = await User.create({
       name,
       about,
