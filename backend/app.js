@@ -1,3 +1,4 @@
+require('dotenv').config();
 const cookieParser = require('cookie-parser');
 const express = require('express');
 const mongoose = require('mongoose');
@@ -10,10 +11,10 @@ const auth = require('./middlewares/auth');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const { cors } = require('./middlewares/cors');
 
-const { PORT = 3001 } = process.env;
+const { PORT = 3001, MONGO_URI = 'mongodb://localhost:27017/mestodb' } = process.env;
 const app = express();
 
-mongoose.connect('mongodb://localhost:27017/mestodb', {
+mongoose.connect(MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: false,
 });
