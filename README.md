@@ -6,3 +6,6 @@ https://place.nomoredomains.sbs
 
 # API:
 https://mesto.backend-test.nomoredomains.sbs
+
+# Адрес сервера
+158.160.14.73
