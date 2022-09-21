@@ -100,7 +100,7 @@ const login = async (req, res, next) => {
       maxAge: 3600000 * 24 * 7,
       httpOnly: true,
     });
-    res.send(user);
+    res.send({ message: 'Авторизация успешна' });
   } catch (err) {
     next(err);
   }
